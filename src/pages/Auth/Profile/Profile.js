@@ -55,7 +55,7 @@ const ProfileSchema = Yup.object().shape({
 		.required("The email is required."),
 	password: Yup.string().min(8, "The password is too short."),
 	confirmPassword: Yup.string().when("password", {
-		is: (password) => password.length > 0,
+		is: true,
 		then: Yup.string()
 			.required("You need to confirm your password.")
 			.oneOf([Yup.ref("password"), null], `Password doesn't match`),

@@ -9,6 +9,7 @@ import thunk from "redux-thunk";
 import reducer from "./reducers";
 import { reduxFirebase } from "react-redux-firebase";
 
+// object containing Firebase config
 const fbConfig = {
 	apiKey: process.env.REACT_APP_APIKEY,
 	authDomain: "todo-39971.firebaseapp.com",
@@ -16,7 +17,8 @@ const fbConfig = {
 	storageBucket: "todo-39971.appspot.com",
 	messagingSenderId: "491348963336",
 	appId: "1:491348963336:web:408428cb2f491513b7a1bd",
-}; // object containing Firebase config
+};
+
 const rrfConfig = {
 	userProfile: "users",
 	useFirestoreForProfile: true,
