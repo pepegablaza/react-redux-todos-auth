@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import * as Yup from "yup";
-import * as actions from "../../../store/actions";
+import * as actions from "../../store/actions";
 import { connect } from "react-redux";
 import { Formik, Field } from "formik";
 import styled from "styled-components";
-import { FormWrapper, StyledForm } from "../../../layout/elements";
-import Message from "../../../components/Main/Message/Message";
-import Button from "../../../components/Main/Forms/Button";
-import Heading from "../../../components/Main/Headings/Heading";
-import Input from "../../../components/Main/Forms/Input";
-import Modal from "../../../components/Main/Modal/Modal";
+import { FormWrapper, StyledForm } from "../../layout/elements";
+import Message from "../../components/Main/Message";
+import Button from "../../components/Main/Button";
+import Heading from "../../components/Main/Heading";
+import Input from "../../components/Main/Input";
+import Modal from "../../components/Modal/Modal";
 
 const MessageWrapper = styled.div`
 	position: absolute;

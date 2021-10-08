@@ -1,11 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
-import Button from "../../../components/Main/Forms/Button";
-import Modal from "../../../components/Main/Modal/Modal";
-import Heading from "../../../components/Main/Headings/Heading";
-import Message from "../../../components/Main/Message/Message";
-import * as actions from "../../../store/actions";
+import Button from "../../components/Main/Button";
+import Modal from "../../components/Modal/Modal";
+import Heading from "../../components/Main/Heading";
+import Message from "../../components/Main/Message";
+import * as actions from "../../store/actions";
 
 const ButtonsWrapper = styled.div`
 	display: flex;

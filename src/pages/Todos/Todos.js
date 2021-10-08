@@ -3,12 +3,12 @@ import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import styled from "styled-components";
-import Heading from "../../components/Main/Headings/Heading";
+import Heading from "../../components/Main/Heading";
 import { Container } from "../../layout/elements";
-import InputTodo from "./InputTodo/InputTodo";
-import Loader from "../../components/Main/Loader/Loader";
-import Todo from "./Todo/Todo";
-import Button from "../../components/Main/Forms/Button";
+import InputTodo from "./InputTodo";
+import Loader from "../../components/Main/Loader";
+import Todo from "./Todo";
+import Button from "../../components/Main/Button";
 
 const Wrapper = styled.div`
 	width: 100%;
@@ -34,10 +34,9 @@ const Content = styled.div`
 	margin-top: 2rem;
 `;
 
-const Todos = ({ todos, requested, userId }) => {
+const Todos = ({ todos, userId }) => {
 	const [isAdding, setIsAdding] = useState(false);
 	let content;
-	console.log(todos);
 
 	if (!todos) {
 		content = (

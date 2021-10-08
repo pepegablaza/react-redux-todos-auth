@@ -6,10 +6,10 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 
 import { FormWrapper, StyledForm } from "../../layout/elements";
-import Input from "../../components/Main/Forms/Input";
-import Button from "../../components/Main/Forms/Button";
-import Heading from "../../components/Main/Headings/Heading";
-import Message from "../../components/Main/Message/Message";
+import Input from "../../components/Main/Input";
+import Button from "../../components/Main/Button";
+import Heading from "../../components/Main/Heading";
+import Message from "../../components/Main/Message";
 
 const MessageWrapper = styled.div`
 	position: absolute;

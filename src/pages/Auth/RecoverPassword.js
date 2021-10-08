@@ -1,14 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import * as Yup from "yup";
-import * as actions from "../../../store/actions";
+import * as actions from "../../store/actions";
 import { connect } from "react-redux";
 import { Formik, Field } from "formik";
-import { FormWrapper, StyledForm } from "../../../layout/elements";
-import Heading from "../../../components/Main/Headings/Heading";
-import Input from "../../../components/Main/Forms/Input";
-import Button from "../../../components/Main/Forms/Button";
-import Message from "../../../components/Main/Message/Message";
+import { FormWrapper, StyledForm } from "../../layout/elements";
+import Heading from "../../components/Main/Heading";
+import Input from "../../components/Main/Input";
+import Button from "../../components/Main/Button";
+import Message from "../../components/Main/Message";
 
 const MessageWrapper = styled.div`
 	position: absolute;

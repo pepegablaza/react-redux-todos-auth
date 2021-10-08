@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import { Formik, Field } from "formik";
 import * as Yup from "yup";
 import { connect } from "react-redux";
-import * as actions from "../../../store/actions";
-import { StyledForm } from "../../../layout/elements";
-import Button from "../../../components/Main/Forms/Button";
+import * as actions from "../../store/actions";
+import { StyledForm } from "../../layout/elements";
+import Button from "../../components/Main/Button";
 import styled from "styled-components";
-import Heading from "../../../components/Main/Headings/Heading";
-import Modal from "../../../components/Main/Modal/Modal";
-import Input from "../../../components/Main/Forms/Input";
-import Message from "../../../components/Main/Message/Message";
+import Heading from "../../components/Main/Heading";
+import Modal from "../../components/Modal/Modal";
+import Input from "../../components/Main/Input";
+import Message from "../../components/Main/Message";
 
 const ButtonsWrapper = styled.div`
 	display: flex;

@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
-import { FormWrapper } from "../../../layout/elements";
-import Heading from "../../../components/Main/Headings/Heading";
-import Button from "../../../components/Main/Forms/Button";
-import * as actions from "../../../store/actions";
-import Message from "../../../components/Main/Message/Message";
+import * as actions from "../../store/actions";
+
+import { FormWrapper } from "../../layout/elements";
+import Message from "../../components/Main/Message";
+import Button from "../../components/Main/Button";
+import Heading from "../../components/Main/Heading";
 
 const MessageWrapper = styled.div`
 	position: absolute;

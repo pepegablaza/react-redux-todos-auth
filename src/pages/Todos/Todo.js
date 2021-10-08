@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import InputTodo from "../InputTodo/InputTodo";
+import InputTodo from "./InputTodo";
 import DeleteTodo from "./DeleteTodo";
 
 const Wrapper = styled.div`
