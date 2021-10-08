@@ -1,40 +1,15 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Formik, Field } from "formik";
-import * as Yup from "yup";
-import styled from "styled-components";
 import * as actions from "../../store/actions";
 
-import { FormWrapper, StyledForm } from "../../layout/elements";
 import Input from "../../components/Main/Input";
 import Button from "../../components/Main/Button";
 import Heading from "../../components/Main/Heading";
 import Message from "../../components/Main/Message";
-
-const MessageWrapper = styled.div`
-	position: absolute;
-	bottom: 0;
-`;
-
-const SignUpSchema = Yup.object().shape({
-	firstName: Yup.string()
-		.required("Your first name is required.")
-		.min(3, "Too short.")
-		.max(25, "Too long."),
-	lastName: Yup.string()
-		.required("Your last name is required.")
-		.min(3, "Too short.")
-		.max(25, "Too long."),
-	email: Yup.string()
-		.email("Invalid email.")
-		.required("The email is required."),
-	password: Yup.string()
-		.required("The passoword is required.")
-		.min(8, "The password is too short."),
-	confirmPassword: Yup.string()
-		.oneOf([Yup.ref("password"), null], `Password doesn't match`)
-		.required("You need to confirm your password."),
-});
+import SignUpSchema from "../../schemas/SignUpSchema";
+import { SignUpMessageWrapper } from "../../layout/elements/Messages";
+import { FormWrapper, StyledForm } from "../../layout/elements/Forms";
 
 const SignUp = ({ signUp, loading, error, cleanUp }) => {
 	useEffect(() => {
@@ -104,11 +79,11 @@ const SignUp = ({ signUp, loading, error, cleanUp }) => {
 						>
 							Sign up
 						</Button>
-						<MessageWrapper>
+						<SignUpMessageWrapper>
 							<Message error show={error}>
 								{error}
 							</Message>
-						</MessageWrapper>
+						</SignUpMessageWrapper>
 					</StyledForm>
 				</FormWrapper>
 			)}

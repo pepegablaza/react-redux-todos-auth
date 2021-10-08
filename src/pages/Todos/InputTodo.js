@@ -1,15 +1,15 @@
 import React from "react";
 import { Formik, Field } from "formik";
-import * as Yup from "yup";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions";
-import { StyledForm } from "../../layout/elements";
+import { StyledForm } from "../../layout/elements/Forms";
 import Button from "../../components/Main/Button";
 import styled from "styled-components";
 import Heading from "../../components/Main/Heading";
 import Modal from "../../components/Modal/Modal";
 import Input from "../../components/Main/Input";
 import Message from "../../components/Main/Message";
+import TodoSchema from "../../schemas/TodoSchema";
 
 const ButtonsWrapper = styled.div`
 	display: flex;
@@ -25,10 +25,6 @@ const MessageWrapper = styled.div`
 	width: 100%;
 	padding: 0 3rem;
 `;
-
-const TodoSchema = Yup.object().shape({
-	todo: Yup.string().required("The todo is required.").min(4, "Too short"),
-});
 
 const InputTodo = ({
 	editTodo,

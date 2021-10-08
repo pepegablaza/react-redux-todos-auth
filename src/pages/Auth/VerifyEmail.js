@@ -1,26 +1,12 @@
 import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import styled from "styled-components";
 import * as actions from "../../store/actions";
+import { connect } from "react-redux";
 
-import { FormWrapper } from "../../layout/elements";
+import { VerifyWrapper, VerifyMessageWrapper } from "../../layout/elements";
+import { FormWrapper } from "../../layout/elements/Forms";
 import Message from "../../components/Main/Message";
 import Button from "../../components/Main/Button";
 import Heading from "../../components/Main/Heading";
-
-const MessageWrapper = styled.div`
-	position: absolute;
-	bottom: 0;
-`;
-
-const Wrapper = styled.div`
-	width: 100%;
-	position: relative;
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-`;
 
 const VerifyEmail = ({ sendVerification, error, loading, cleanUp }) => {
 	useEffect(() => {
@@ -30,7 +16,7 @@ const VerifyEmail = ({ sendVerification, error, loading, cleanUp }) => {
 	}, [cleanUp]);
 	return (
 		<FormWrapper>
-			<Wrapper>
+			<VerifyWrapper>
 				<Heading color="white" noMargin size="h1">
 					Verify your email
 				</Heading>
@@ -44,17 +30,17 @@ const VerifyEmail = ({ sendVerification, error, loading, cleanUp }) => {
 				>
 					Re-send verification email
 				</Button>
-				<MessageWrapper>
+				<VerifyMessageWrapper>
 					<Message error show={error}>
 						{error}
 					</Message>
-				</MessageWrapper>
-				<MessageWrapper>
+				</VerifyMessageWrapper>
+				<VerifyMessageWrapper>
 					<Message success show={error === false}>
 						Message sent successfully
 					</Message>
-				</MessageWrapper>
-			</Wrapper>
+				</VerifyMessageWrapper>
+			</VerifyWrapper>
 		</FormWrapper>
 	);
 };

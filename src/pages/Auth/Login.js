@@ -1,29 +1,15 @@
 import React, { useEffect } from "react";
 import { Formik, Field } from "formik";
-import * as Yup from "yup";
-import * as actions from "../../store/actions";
 import { connect } from "react-redux";
-import styled from "styled-components";
 
-import { FormWrapper, StyledForm } from "../../layout/elements";
+import * as actions from "../../store/actions";
+import LoginSchema from "../../schemas/LoginSchema";
 import Input from "../../components/Main/Input";
 import Button from "../../components/Main/Button";
 import Heading from "../../components/Main/Heading";
 import Message from "../../components/Main/Message";
-
-const MessageWrapper = styled.div`
-	position: absolute;
-	bottom: 0;
-`;
-
-const LoginSchema = Yup.object().shape({
-	email: Yup.string()
-		.email("Invalid email.")
-		.required("The email is required."),
-	password: Yup.string()
-		.required("The passoword is required.")
-		.min(8, "Too short."),
-});
+import { FormWrapper, StyledForm } from "../../layout/elements/Forms";
+import { LoginMessageWrapper } from "../../layout/elements/Messages";
 
 const Login = ({ login, loading, error, cleanUp }) => {
 	useEffect(() => {
@@ -72,11 +58,11 @@ const Login = ({ login, loading, error, cleanUp }) => {
 						>
 							Login
 						</Button>
-						<MessageWrapper>
+						<LoginMessageWrapper>
 							<Message error show={error}>
 								{error}
 							</Message>
-						</MessageWrapper>
+						</LoginMessageWrapper>
 					</StyledForm>
 				</FormWrapper>
 			)}

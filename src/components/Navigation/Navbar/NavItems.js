@@ -1,19 +1,6 @@
 import React from "react";
-import styled from "styled-components";
-
+import { Ul, Nav } from "../../../layout/elements/Navbars";
 import NavItem from "./NavItem";
-
-const Nav = styled.nav`
-	display: flex;
-	margin-top: ${(props) => (props.mobile ? "-6rem" : null)};
-`;
-
-const Ul = styled.ul`
-	display: flex;
-	flex-direction: ${(props) => (props.mobile ? "column" : "row")};
-	align-items: center;
-	height: 100%;
-`;
 
 const NavItems = ({ mobile, clicked, loggedIn }) => {
 	let links;

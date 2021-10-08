@@ -1,12 +1,12 @@
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import "firebase/compat/auth";
+import thunk from "redux-thunk";
+import reducer from "./reducers";
 import { createFirestoreInstance } from "redux-firestore";
 import { applyMiddleware, createStore, compose } from "redux";
 import { getFirebase } from "react-redux-firebase";
 import { getFirestore } from "redux-firestore";
-import thunk from "redux-thunk";
-import reducer from "./reducers";
 import { reduxFirebase } from "react-redux-firebase";
 
 // object containing Firebase config

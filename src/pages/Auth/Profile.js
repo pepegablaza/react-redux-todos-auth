@@ -1,66 +1,20 @@
 import { useEffect, useState } from "react";
-import * as Yup from "yup";
-import * as actions from "../../store/actions";
 import { connect } from "react-redux";
 import { Formik, Field } from "formik";
-import styled from "styled-components";
-import { FormWrapper, StyledForm } from "../../layout/elements";
+
+import * as actions from "../../store/actions";
 import Message from "../../components/Main/Message";
 import Button from "../../components/Main/Button";
 import Heading from "../../components/Main/Heading";
 import Input from "../../components/Main/Input";
 import Modal from "../../components/Modal/Modal";
-
-const MessageWrapper = styled.div`
-	position: absolute;
-	bottom: 2rem;
-	width: 100%;
-	padding: 0 3rem;
-`;
-
-const DeleteWrapper = styled.div`
-	cursor: pointer;
-	color: var(--color-errorRed);
-	font-size: 1.3rem;
-	font-weight: 700;
-	margin-top: 2rem;
-	transition: all 0.2s;
-	&:hover {
-		transform: translateY(-3px);
-	}
-	&:active {
-		transform: translateY(2px);
-	}
-`;
-
-const ButtonsWrapper = styled.div`
-	display: flex;
-	width: 100%;
-	position: relative;
-	margin-bottom: 2rem;
-	justify-content: space-around;
-`;
-
-const ProfileSchema = Yup.object().shape({
-	firstName: Yup.string()
-		.required("Your first name is required.")
-		.min(3, "Too short.")
-		.max(25, "Too long."),
-	lastName: Yup.string()
-		.required("Your last name is required.")
-		.min(3, "Too short.")
-		.max(25, "Too long."),
-	email: Yup.string()
-		.email("Invalid email.")
-		.required("The email is required."),
-	password: Yup.string().min(8, "The password is too short."),
-	confirmPassword: Yup.string().when("password", {
-		is: true,
-		then: Yup.string()
-			.required("You need to confirm your password.")
-			.oneOf([Yup.ref("password"), null], `Password doesn't match`),
-	}),
-});
+import ProfileSchema from "../../schemas/ProfileSchema";
+import {
+	ProfileMessageWrapper,
+	ProfileDeleteWrapper,
+} from "../../layout/elements/Messages";
+import { ProfileButtonsWrapper } from "../../layout/elements/Buttons";
+import { FormWrapper, StyledForm } from "../../layout/elements/Forms";
 
 const Profile = ({
 	firebase,
@@ -144,19 +98,19 @@ const Profile = ({
 							>
 								Edit
 							</Button>
-							<MessageWrapper>
+							<ProfileMessageWrapper>
 								<Message error show={error}>
 									{error}
 								</Message>
-							</MessageWrapper>
-							<MessageWrapper>
+							</ProfileMessageWrapper>
+							<ProfileMessageWrapper>
 								<Message success show={error === false}>
 									Profile was updated!
 								</Message>
-							</MessageWrapper>
-							<DeleteWrapper onClick={() => setModalOpened(true)}>
+							</ProfileMessageWrapper>
+							<ProfileDeleteWrapper onClick={() => setModalOpened(true)}>
 								Delete my account
-							</DeleteWrapper>
+							</ProfileDeleteWrapper>
 						</StyledForm>
 					</FormWrapper>
 				)}
@@ -168,7 +122,7 @@ const Profile = ({
 				<Heading bold size="h4" color="white">
 					Do you really want to delete your account?
 				</Heading>
-				<ButtonsWrapper>
+				<ProfileButtonsWrapper>
 					<Button
 						contain
 						onClick={() => deleteUser()}
@@ -181,12 +135,12 @@ const Profile = ({
 					<Button color="main" contain onClick={() => setModalOpened(false)}>
 						Cancel
 					</Button>
-				</ButtonsWrapper>
-				<MessageWrapper>
+				</ProfileButtonsWrapper>
+				<ProfileMessageWrapper>
 					<Message error show={errorDelete}>
 						{errorDelete}
 					</Message>
-				</MessageWrapper>
+				</ProfileMessageWrapper>
 			</Modal>
 		</>
 	);

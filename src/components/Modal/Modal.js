@@ -1,49 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import styled from "styled-components";
+import { ModalWrapper, ModalInsideWrapper } from "../../layout/elements/Modals";
 import Backdrop from "./Backdrop/Backdrop";
-
-const WrappedModal = styled.div`
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	transform: ${({ opened }) =>
-		opened ? "translate(-50%,-50%)" : "tranlsate(-50%,-150%)"};
-	width: 100%;
-	max-width: 70rem;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	z-index: 150;
-	justify-content: center;
-	opacity: ${({ opened }) => (opened ? "1" : "0")};
-	visibility: ${({ opened }) => (opened ? "visible" : "hidden")};
-	width: 100%;
-	max-width: 50rem;
-	box-shadow: 0 0.5rem 3.5em var(--shadow);
-	border-radius: 1rem;
-	background-color: var(--color-mainLighter);
-	transition: all 0.1s;
-`;
-
-const InsideWrapper = styled.div`
-	position: relative;
-	width: 100%;
-	padding: 4rem 3rem;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-`;
 
 const Modal = React.memo(
 	({ opened, close, children }) => {
 		return ReactDOM.createPortal(
 			<>
 				<Backdrop close={close} opened={opened} />
-				<WrappedModal opened={opened}>
-					<InsideWrapper>{children}</InsideWrapper>
-				</WrappedModal>
+				<ModalWrapper opened={opened}>
+					<ModalInsideWrapper>{children}</ModalInsideWrapper>
+				</ModalWrapper>
 			</>,
 			document.getElementById("root-modal")
 		);

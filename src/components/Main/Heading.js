@@ -1,35 +1,10 @@
 import React from "react";
-import styled, { css } from "styled-components";
-
-const baseStyle = css`
-	color: ${({ color }) =>
-		color === "white" ? "var(--color-white)" : "var(--color-main)"};
-	font-weight: ${({ bold }) => (bold ? "700" : "300")};
-	margin-top: 0;
-	letter-spacing: 1px;
-	margin-bottom: ${({ noMargin }) => (noMargin ? "0rem" : "3rem")};
-`;
-
-const Heading1 = styled.h1`
-	font-size: 2.5rem;
-	text-transform: uppercase;
-	${baseStyle}
-`;
-
-const Heading2 = styled.h2`
-	font-size: 1.8rem;
-	${baseStyle}
-`;
-
-const Heading3 = styled.h3`
-	font-size: 1.5rem;
-	${baseStyle}
-`;
-
-const Heading4 = styled.h4`
-	font-size: 1.3rem;
-	${baseStyle}
-`;
+import {
+	Heading1,
+	Heading2,
+	Heading3,
+	Heading4,
+} from "../../layout/elements/Headings";
 
 const Heading = ({ children, color, noMargin, bold, size }) => {
 	if (size === "h1")

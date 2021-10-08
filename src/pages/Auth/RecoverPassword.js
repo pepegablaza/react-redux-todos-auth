@@ -1,25 +1,15 @@
 import React from "react";
-import styled from "styled-components";
-import * as Yup from "yup";
-import * as actions from "../../store/actions";
 import { connect } from "react-redux";
 import { Formik, Field } from "formik";
-import { FormWrapper, StyledForm } from "../../layout/elements";
+
+import * as actions from "../../store/actions";
+import RecoverSchema from "../../schemas/RecoverSchema";
 import Heading from "../../components/Main/Heading";
 import Input from "../../components/Main/Input";
 import Button from "../../components/Main/Button";
 import Message from "../../components/Main/Message";
-
-const MessageWrapper = styled.div`
-	position: absolute;
-	bottom: 0;
-`;
-
-const RecoverSchema = Yup.object().shape({
-	email: Yup.string()
-		.email("Invalid email.")
-		.required("The email is required."),
-});
+import { RecoverMessageWrapper } from "../../layout/elements/Messages";
+import { FormWrapper, StyledForm } from "../../layout/elements/Forms";
 
 const RecoverPassword = ({ error, loading, sendEmail }) => {
 	return (
@@ -55,16 +45,16 @@ const RecoverPassword = ({ error, loading, sendEmail }) => {
 						>
 							Recover Email
 						</Button>
-						<MessageWrapper>
+						<RecoverMessageWrapper>
 							<Message error show={error}>
 								{error}
 							</Message>
-						</MessageWrapper>
-						<MessageWrapper>
+						</RecoverMessageWrapper>
+						<RecoverMessageWrapper>
 							<Message success show={error === false}>
 								Recover email sent successfully
 							</Message>
-						</MessageWrapper>
+						</RecoverMessageWrapper>
 					</StyledForm>
 				</FormWrapper>
 			)}
