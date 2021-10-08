@@ -37,6 +37,7 @@ const Content = styled.div`
 const Todos = ({ todos, requested, userId }) => {
 	const [isAdding, setIsAdding] = useState(false);
 	let content;
+	console.log(todos);
 
 	if (!todos) {
 		content = (
@@ -44,10 +45,15 @@ const Todos = ({ todos, requested, userId }) => {
 				<Loader isWhite />
 			</Content>
 		);
-	} else if (
-		(!todos[userId] && requested[`todos/${userId}`]) ||
-		!todos[userId].todos.length
-	) {
+	} else if (!todos[userId] || !todos[userId].todos) {
+		content = (
+			<Content>
+				<Heading color="white" size="h2">
+					You have no todos
+				</Heading>
+			</Content>
+		);
+	} else if (todos[userId].todos.length === 0) {
 		content = (
 			<Content>
 				<Heading color="white" size="h2">

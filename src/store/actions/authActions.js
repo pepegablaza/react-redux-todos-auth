@@ -135,6 +135,7 @@ export const deleteUser =
 		dispatch({ type: actions.DELETE_START });
 		try {
 			await firestore.collection("users").doc(userId).delete();
+			await firestore.collection("todos").doc(userId).delete();
 			await user.delete();
 		} catch (err) {
 			dispatch({ type: actions.DELETE_FAIL, payload: err.message });
