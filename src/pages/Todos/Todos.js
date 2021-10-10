@@ -2,95 +2,65 @@ import React, { useState } from "react";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import { connect } from "react-redux";
-import styled from "styled-components";
 import Heading from "../../components/Main/Heading";
-import { Container } from "../../layout/elements";
+import {
+	TodosNavigationContainer,
+	TodosMainContainer,
+	TodosContainer,
+} from "../../layout/elements/Main";
 import InputTodo from "./InputTodo";
-import Loader from "../../components/Main/Loader";
 import Todo from "./Todo";
 import Button from "../../components/Main/Button";
-
-const Wrapper = styled.div`
-	width: 100%;
-	align-self: flex-start;
-	background-color: var(--color-mainLight);
-	height: 100%;
-	min-height: calc(100vh - 6rem);
-`;
-
-const InnerWrapper = styled.div`
-	display: flex;
-	padding: 5rem 4rem;
-	flex-direction: column;
-	align-items: center;
-`;
-
-const Content = styled.div`
-	width: 100%;
-	align-items: center;
-	max-width: 60rem;
-	display: flex;
-	flex-direction: column;
-	margin-top: 2rem;
-`;
+import Loader from "../../components/Main/Loader";
 
 const Todos = ({ todos, userId }) => {
 	const [isAdding, setIsAdding] = useState(false);
-	let content;
 
+	let content;
 	if (!todos) {
 		content = (
-			<Content>
+			<>
 				<Loader isWhite />
-			</Content>
+			</>
 		);
-	} else if (!todos[userId] || !todos[userId].todos) {
+	} else if (
+		!todos[userId] ||
+		!todos[userId].todos ||
+		!todos[userId].todos.length
+	) {
 		content = (
-			<Content>
-				<Heading color="white" size="h2">
-					You have no todos
+			<>
+				<Heading color="dark" size="h1">
+					You have nothing to do...
 				</Heading>
-			</Content>
-		);
-	} else if (todos[userId].todos.length === 0) {
-		content = (
-			<Content>
-				<Heading color="white" size="h2">
-					You have no todos
-				</Heading>
-			</Content>
+			</>
 		);
 	} else {
 		content = (
-			<Content>
+			<>
 				{todos[userId].todos
 					.slice(0)
 					.reverse()
 					.map((todo) => (
 						<Todo key={todo.id} todo={todo} />
 					))}
-			</Content>
+			</>
 		);
 	}
-
 	return (
-		<Wrapper>
-			<Container>
-				<InnerWrapper>
-					<Heading noMargin size="h1" color="white">
-						Your Todos
-					</Heading>
-					<Heading bold size="h4" color="white">
-						All you have to do for now....
-					</Heading>
-					<Button color="main" contain onClick={() => setIsAdding(true)}>
-						Add Todo
-					</Button>
-					<InputTodo opened={isAdding} close={() => setIsAdding(false)} />
-					{content}
-				</InnerWrapper>
-			</Container>
-		</Wrapper>
+		<TodosMainContainer>
+			<TodosNavigationContainer>
+				<Heading noMargin bold size="h1" color="dark">
+					Your Todos
+				</Heading>
+				<Button color="main" contain onClick={() => setIsAdding(true)}>
+					+ New Todo
+				</Button>
+				<InputTodo opened={isAdding} close={() => setIsAdding(false)} />
+			</TodosNavigationContainer>
+
+			<TodosContainer>{content}</TodosContainer>
+		</TodosMainContainer>
 	);
 };
 

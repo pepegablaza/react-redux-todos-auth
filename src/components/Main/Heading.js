@@ -1,5 +1,6 @@
 import React from "react";
 import {
+	Heading0,
 	Heading1,
 	Heading2,
 	Heading3,
@@ -7,6 +8,12 @@ import {
 } from "../../layout/elements/Headings";
 
 const Heading = ({ children, color, noMargin, bold, size }) => {
+	if (size === "xl")
+		return (
+			<Heading0 noMargin={noMargin} bold={bold} color={color}>
+				{children}
+			</Heading0>
+		);
 	if (size === "h1")
 		return (
 			<Heading1 noMargin={noMargin} bold={bold} color={color}>

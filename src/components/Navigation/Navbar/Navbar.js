@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Container } from "../../../layout/elements";
+import { Container } from "../../../layout/elements/Main";
 import {
 	NavbarWrapper,
 	NavbarInnerWrapper,

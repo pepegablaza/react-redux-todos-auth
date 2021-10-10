@@ -8,6 +8,7 @@ import VerifyEmail from "../pages/Auth/VerifyEmail";
 import RecoverPassword from "../pages/Auth/RecoverPassword";
 import Profile from "../pages/Auth/Profile";
 import Loader from "../components/Main/Loader";
+import { HomePage } from "../pages/Home/HomePage";
 const Todos = React.lazy(() => import("../pages/Todos/Todos"));
 
 const Routes = ({ loggedIn, emailVerified }) => {
@@ -16,30 +17,33 @@ const Routes = ({ loggedIn, emailVerified }) => {
 	if (loggedIn && !emailVerified) {
 		routes = (
 			<Switch>
+				<Route exact path="/" component={HomePage} />
 				<Route exact path="/verify-email" component={VerifyEmail} />
 				<Route exact path="/profile" component={Profile} />
 				<Route exact path="/logout" component={Logout} />
-				<Redirect to="/verify-email" />
+				<Redirect to="/verify-email" component={VerifyEmail} />
 			</Switch>
 		);
 	} else if (loggedIn && emailVerified) {
 		routes = (
 			<Suspense fallback={<Loader />}>
 				<Switch>
-					<Route exact path="/" component={Todos} />
+					<Route exact path="/" component={HomePage} />
+					<Route exact path="/todos" component={Todos} />
 					<Route exact path="/profile" component={Profile} />
 					<Route exact path="/logout" component={Logout} />
-					<Redirect to="/" />
+					<Redirect to="/" component={HomePage} />
 				</Switch>
 			</Suspense>
 		);
 	} else {
 		routes = (
 			<Switch>
+				<Route exact path="/" component={HomePage} />
 				<Route exact path="/login" component={Login} />
 				<Route exact path="/signup" component={SignUp} />
 				<Route exact path="/recover" component={RecoverPassword} />
-				<Redirect to="/login" />
+				<Redirect to="/" component={HomePage} />
 			</Switch>
 		);
 	}

@@ -13,8 +13,13 @@ import {
 	ProfileMessageWrapper,
 	ProfileDeleteWrapper,
 } from "../../layout/elements/Messages";
-import { ProfileButtonsWrapper } from "../../layout/elements/Buttons";
-import { FormWrapper, StyledForm } from "../../layout/elements/Forms";
+import {
+	DeleteProfileButtonsContainer,
+	ProfileButtonsWrapper,
+} from "../../layout/elements/Buttons";
+import { FormContainer, StyledForm } from "../../layout/elements/Forms";
+import FormBannerContainer from "../../components/Main/FormBannerContainer";
+import { VerifyContainer } from "../../layout/elements/Main";
 
 const Profile = ({
 	firebase,
@@ -53,13 +58,15 @@ const Profile = ({
 				}}
 			>
 				{({ isSubmitting, isValid }) => (
-					<FormWrapper>
-						<Heading noMargin size="h1" color="white">
-							Edit your profile
-						</Heading>
-						<Heading bold size="h4" color="white">
-							Here you can edit your profile
-						</Heading>
+					<FormContainer>
+						<FormBannerContainer>
+							<Heading bold size="h1" color="white">
+								Profile
+							</Heading>
+							<Heading size="h3" color="white">
+								Edit your profile informations.
+							</Heading>
+						</FormBannerContainer>
 						<StyledForm>
 							<Field
 								type="text"
@@ -108,21 +115,26 @@ const Profile = ({
 									Profile was updated!
 								</Message>
 							</ProfileMessageWrapper>
-							<ProfileDeleteWrapper onClick={() => setModalOpened(true)}>
-								Delete my account
+							<ProfileDeleteWrapper
+								stage="error"
+								onClick={() => setModalOpened(true)}
+							>
+								Delete my profile
 							</ProfileDeleteWrapper>
 						</StyledForm>
-					</FormWrapper>
+					</FormContainer>
 				)}
 			</Formik>
 			<Modal opened={modalOpened} close={() => setModalOpened(false)}>
-				<Heading noMargin size="h1" color="white">
-					Delete your account
-				</Heading>
-				<Heading bold size="h4" color="white">
-					Do you really want to delete your account?
-				</Heading>
-				<ProfileButtonsWrapper>
+				<FormBannerContainer>
+					<Heading noMargin size="h1" color="white">
+						Delete your account
+					</Heading>
+					<Heading bold size="h4" color="white">
+						Do you really want to delete your account?
+					</Heading>
+				</FormBannerContainer>
+				<DeleteProfileButtonsContainer>
 					<Button
 						contain
 						onClick={() => deleteUser()}
@@ -135,12 +147,10 @@ const Profile = ({
 					<Button color="main" contain onClick={() => setModalOpened(false)}>
 						Cancel
 					</Button>
-				</ProfileButtonsWrapper>
-				<ProfileMessageWrapper>
 					<Message error show={errorDelete}>
 						{errorDelete}
 					</Message>
-				</ProfileMessageWrapper>
+				</DeleteProfileButtonsContainer>
 			</Modal>
 		</>
 	);

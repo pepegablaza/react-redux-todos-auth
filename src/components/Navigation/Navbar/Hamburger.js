@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledHamb } from "../../../layout/elements/Navbars";
+import { StyledHamb } from "../../../layout/elements/Hamburger";
 
 const Hamburger = ({ opened, clicked }) => {
 	return (

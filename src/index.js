@@ -4,7 +4,6 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { Provider, useSelector } from "react-redux";
 import { ReactReduxFirebaseProvider, isLoaded } from "react-redux-firebase";
 import styled, { ThemeProvider } from "styled-components";
-
 import App from "./App";
 import { store, rrfProps } from "./store";
 import Loader from "./components/Main/Loader";

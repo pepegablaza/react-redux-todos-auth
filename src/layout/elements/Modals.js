@@ -8,29 +8,27 @@ export const ModalWrapper = styled.div`
 	left: 50%;
 	transform: ${({ opened }) =>
 		opened ? "translate(-50%,-50%)" : "tranlsate(-50%,-150%)"};
-	width: 100%;
-	max-width: 70rem;
+
+	max-width: 800px;
+	width: 75%;
+	min-height: 50vh;
 	display: flex;
-	flex-direction: column;
-	align-items: center;
+
 	z-index: 150;
-	justify-content: center;
 	opacity: ${({ opened }) => (opened ? "1" : "0")};
 	visibility: ${({ opened }) => (opened ? "visible" : "hidden")};
-	width: 100%;
-	max-width: 50rem;
 	box-shadow: 0 0.5rem 3.5em var(--shadow);
 	border-radius: 1rem;
-	background-color: var(--color-mainLighter);
 	transition: all 0.1s;
 `;
 
 export const ModalInsideWrapper = styled.div`
 	position: relative;
 	width: 100%;
-	padding: 4rem 3rem;
+	border-top-right-radius: 2rem 2rem;
+	border-bottom-right-radius: 2rem 2rem;
 	display: flex;
-	flex-direction: column;
 	align-items: center;
+	background-color: var(--color-white);
 	justify-content: center;
 `;

@@ -16,14 +16,16 @@ export const InputWrapper = styled.div`
 export const StyledInput = styled.input`
 	padding: 1.2rem 2rem;
 	width: 100%;
-	background-color: var(--color-mainLight);
-	color: var(--color-white);
-	font-weight: 500;
+	padding: 1.5rem 3rem;
+	color: var(--color-borderColor);
+	font-weight: 700;
 	font-size: 1.2rem;
-	border-radius: 2rem;
-	border: none;
+	font-family: inherit;
+	outline: none;
+	border-radius: 0.7rem;
+	border: 2px solid var(--color-borderColor);
 	&::placeholder {
-		color: var(--color-white);
+		color: var(--color-borderColor);
 	}
 `;
 

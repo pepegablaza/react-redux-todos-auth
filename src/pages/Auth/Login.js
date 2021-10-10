@@ -8,8 +8,10 @@ import Input from "../../components/Main/Input";
 import Button from "../../components/Main/Button";
 import Heading from "../../components/Main/Heading";
 import Message from "../../components/Main/Message";
-import { FormWrapper, StyledForm } from "../../layout/elements/Forms";
+import { FormContainer, StyledForm } from "../../layout/elements/Forms";
+import FormBannerContainer from "../../components/Main/FormBannerContainer";
 import { LoginMessageWrapper } from "../../layout/elements/Messages";
+import { Link } from "react-router-dom";
 
 const Login = ({ login, loading, error, cleanUp }) => {
 	useEffect(() => {
@@ -31,24 +33,31 @@ const Login = ({ login, loading, error, cleanUp }) => {
 			}}
 		>
 			{({ isSubmitting, isValid }) => (
-				<FormWrapper>
-					<Heading noMargin size="h1" color="white">
-						Login into your account
-					</Heading>
-					<Heading bold size="h4" color="white">
-						Fill in your details to login into your account
-					</Heading>
+				<FormContainer>
+					<FormBannerContainer>
+						<Heading bold size="h1" color="white">
+							Login
+						</Heading>
+						<Heading size="h3" color="white">
+							Login with your existing account. You dont have an account?
+							<Link to="/signup">
+								<Heading noMargin size="h3" bold color="white">
+									Sign up here.
+								</Heading>
+							</Link>
+						</Heading>
+					</FormBannerContainer>
 					<StyledForm>
 						<Field
 							type="email"
 							name="email"
-							placeholder="Your email..."
+							placeholder="Email"
 							component={Input}
 						/>
 						<Field
 							type="password"
 							name="password"
-							placeholder="Your password..."
+							placeholder="Password"
 							component={Input}
 						/>
 						<Button
@@ -58,13 +67,22 @@ const Login = ({ login, loading, error, cleanUp }) => {
 						>
 							Login
 						</Button>
+
+						<Heading noMargin color="dark" size="h3">
+							Forgot your password?
+						</Heading>
+						<Link to="/recover">
+							<LoginMessageWrapper stage="success">
+								Forgot password
+							</LoginMessageWrapper>
+						</Link>
 						<LoginMessageWrapper>
 							<Message error show={error}>
 								{error}
 							</Message>
 						</LoginMessageWrapper>
 					</StyledForm>
-				</FormWrapper>
+				</FormContainer>
 			)}
 		</Formik>
 	);

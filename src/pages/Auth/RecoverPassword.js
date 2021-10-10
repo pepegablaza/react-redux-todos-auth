@@ -9,7 +9,8 @@ import Input from "../../components/Main/Input";
 import Button from "../../components/Main/Button";
 import Message from "../../components/Main/Message";
 import { RecoverMessageWrapper } from "../../layout/elements/Messages";
-import { FormWrapper, StyledForm } from "../../layout/elements/Forms";
+import { FormContainer, StyledForm } from "../../layout/elements/Forms";
+import FormBannerContainer from "../../components/Main/FormBannerContainer";
 
 const RecoverPassword = ({ error, loading, sendEmail }) => {
 	return (
@@ -24,13 +25,15 @@ const RecoverPassword = ({ error, loading, sendEmail }) => {
 			}}
 		>
 			{({ isSubmitting, isValid }) => (
-				<FormWrapper>
-					<Heading size="h1" noMargin color="white">
-						Recover your password
-					</Heading>
-					<Heading size="h4" bold color="white">
-						Type in your e-mail to recover your password
-					</Heading>
+				<FormContainer>
+					<FormBannerContainer>
+						<Heading bold size="h1" color="white">
+							Recover Password
+						</Heading>
+						<Heading size="h3" color="white">
+							Enter your email to recover password
+						</Heading>
+					</FormBannerContainer>
 					<StyledForm>
 						<Field
 							type="email"
@@ -43,7 +46,7 @@ const RecoverPassword = ({ error, loading, sendEmail }) => {
 							loading={loading ? "Sending recover email..." : null}
 							type="submit"
 						>
-							Recover Email
+							Recover Password
 						</Button>
 						<RecoverMessageWrapper>
 							<Message error show={error}>
@@ -56,7 +59,7 @@ const RecoverPassword = ({ error, loading, sendEmail }) => {
 							</Message>
 						</RecoverMessageWrapper>
 					</StyledForm>
-				</FormWrapper>
+				</FormContainer>
 			)}
 		</Formik>
 	);

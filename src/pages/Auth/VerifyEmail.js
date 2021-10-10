@@ -2,11 +2,12 @@ import React, { useEffect } from "react";
 import * as actions from "../../store/actions";
 import { connect } from "react-redux";
 
-import { VerifyWrapper, VerifyMessageWrapper } from "../../layout/elements";
-import { FormWrapper } from "../../layout/elements/Forms";
+import { VerifyContainer } from "../../layout/elements/Main";
+import { FormContainer } from "../../layout/elements/Forms";
 import Message from "../../components/Main/Message";
 import Button from "../../components/Main/Button";
 import Heading from "../../components/Main/Heading";
+import FormBannerContainer from "../../components/Main/FormBannerContainer";
 
 const VerifyEmail = ({ sendVerification, error, loading, cleanUp }) => {
 	useEffect(() => {
@@ -15,14 +16,16 @@ const VerifyEmail = ({ sendVerification, error, loading, cleanUp }) => {
 		};
 	}, [cleanUp]);
 	return (
-		<FormWrapper>
-			<VerifyWrapper>
+		<FormContainer>
+			<FormBannerContainer>
 				<Heading color="white" noMargin size="h1">
 					Verify your email
 				</Heading>
 				<Heading color="white" bold size="h4">
-					Go to your email inbox,and please verify your email
+					To gain all access, go to your inbox and verify your e-mail
 				</Heading>
+			</FormBannerContainer>
+			<VerifyContainer>
 				<Button
 					loading={loading ? "Sending email..." : null}
 					disabled={loading}
@@ -30,18 +33,15 @@ const VerifyEmail = ({ sendVerification, error, loading, cleanUp }) => {
 				>
 					Re-send verification email
 				</Button>
-				<VerifyMessageWrapper>
-					<Message error show={error}>
-						{error}
-					</Message>
-				</VerifyMessageWrapper>
-				<VerifyMessageWrapper>
-					<Message success show={error === false}>
-						Message sent successfully
-					</Message>
-				</VerifyMessageWrapper>
-			</VerifyWrapper>
-		</FormWrapper>
+				<Message error show={error}>
+					{error}
+				</Message>
+
+				<Message success show={error === false}>
+					Message sent successfully
+				</Message>
+			</VerifyContainer>
+		</FormContainer>
 	);
 };
 

@@ -15,7 +15,6 @@ export const signUp =
 			const user = firebase.auth().currentUser;
 			await user.sendEmailVerification();
 
-			console.log(res.user.uid);
 			await firestore.collection("users").doc(res.user.uid).set({
 				firstName: data.firstName,
 				lastName: data.lastName,

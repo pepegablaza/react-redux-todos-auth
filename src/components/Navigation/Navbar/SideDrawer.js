@@ -3,7 +3,7 @@ import {
 	SideDrawerWrapper,
 	SideDrawerInnerWrapper,
 	Menu,
-} from "../../../layout/elements/Navbars";
+} from "../../../layout/elements/SideDrawer";
 import Logo from "../Logo/Logo";
 import NavItems from "./NavItems";
 import Hamburger from "./Hamburger";

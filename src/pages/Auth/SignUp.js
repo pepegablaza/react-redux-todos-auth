@@ -8,8 +8,13 @@ import Button from "../../components/Main/Button";
 import Heading from "../../components/Main/Heading";
 import Message from "../../components/Main/Message";
 import SignUpSchema from "../../schemas/SignUpSchema";
-import { SignUpMessageWrapper } from "../../layout/elements/Messages";
-import { FormWrapper, StyledForm } from "../../layout/elements/Forms";
+import { LoginMessageWrapper } from "../../layout/elements/Messages";
+import {
+	FormBanner,
+	FormContainer,
+	StyledForm,
+} from "../../layout/elements/Forms";
+import Waves from "../../components/Main/Waves";
 
 const SignUp = ({ signUp, loading, error, cleanUp }) => {
 	useEffect(() => {
@@ -34,42 +39,45 @@ const SignUp = ({ signUp, loading, error, cleanUp }) => {
 			}}
 		>
 			{({ isSubmitting, isValid }) => (
-				<FormWrapper>
-					<Heading noMargin size="h1" color="white">
-						Sign up for an account
-					</Heading>
-					<Heading bold size="h4" color="white">
-						Fill in your details to register your new account
-					</Heading>
+				<FormContainer>
+					<FormBanner>
+						<Heading noMargin size="h1" color="white">
+							Sign up
+						</Heading>
+						<Heading bold size="h4" color="white">
+							Fill in your details to register your new account.
+						</Heading>
+						<Waves />
+					</FormBanner>
 					<StyledForm>
 						<Field
 							type="text"
 							name="firstName"
-							placeholder="Your first name..."
+							placeholder="First Name"
 							component={Input}
 						/>
 						<Field
 							type="text"
 							name="lastName"
-							placeholder="Your last name..."
+							placeholder="Last Name"
 							component={Input}
 						/>
 						<Field
 							type="email"
 							name="email"
-							placeholder="Your email..."
+							placeholder="Email"
 							component={Input}
 						/>
 						<Field
 							type="password"
 							name="password"
-							placeholder="Your password..."
+							placeholder="Password"
 							component={Input}
 						/>
 						<Field
 							type="password"
 							name="confirmPassword"
-							placeholder="Re-type your password..."
+							placeholder="Re-type Password"
 							component={Input}
 						/>
 						<Button
@@ -79,13 +87,13 @@ const SignUp = ({ signUp, loading, error, cleanUp }) => {
 						>
 							Sign up
 						</Button>
-						<SignUpMessageWrapper>
+						<LoginMessageWrapper>
 							<Message error show={error}>
 								{error}
 							</Message>
-						</SignUpMessageWrapper>
+						</LoginMessageWrapper>
 					</StyledForm>
-				</FormWrapper>
+				</FormContainer>
 			)}
 		</Formik>
 	);

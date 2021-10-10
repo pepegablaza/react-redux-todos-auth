@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { MainWrapper } from "./elements";
+import { MainWrapper } from "./elements/Main";
 import Navbar from "../components/Navigation/Navbar/Navbar";
 import SideDrawer from "../components/Navigation/Navbar/SideDrawer";
 
