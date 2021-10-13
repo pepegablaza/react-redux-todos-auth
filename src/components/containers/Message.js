@@ -1,21 +1,8 @@
 import styled from "styled-components";
 
-//Message
-export const P = styled.p`
-	font-weight: 700;
-	font-size: 1.2rem;
-	color: ${({ error, success }) => {
-		if (error) return "var(--color-errorRed)";
-		if (success) return "green";
-		else return "var(--color-main)";
-	}};
-	opacity: ${({ show }) => (show ? "1" : "0")};
-	transform: translateY(${({ show }) => (show ? "0px" : "0px")});
-	text-align: center;
-	transition: all 0.2s;
-`;
+//Container for messages
 
-export const LoginMessageWrapper = styled.div`
+export const MessagesContainer = styled.div`
 	cursor: pointer;
 	color: var(--color-mainDark);
 	font-size: 1.3rem;
@@ -30,14 +17,16 @@ export const LoginMessageWrapper = styled.div`
 	}
 `;
 
-export const ProfileMessageWrapper = styled.div`
+//Container for Profile actions message
+export const ProfileMessageContainer = styled.div`
 	position: absolute;
 	bottom: 2rem;
 	width: 100%;
 	padding: 0 3rem;
 `;
+//Container for profile delete message
 
-export const ProfileDeleteWrapper = styled.div`
+export const ProfileDeleteContainer = styled.div`
 	cursor: pointer;
 	color: ${({ stage }) => {
 		if (stage === "error") return "var(--color-errorRed)";

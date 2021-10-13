@@ -1,24 +1,23 @@
 import React from "react";
 import { connect } from "react-redux";
 import Button from "../../components/Main/Button";
+import { HeadingContainer } from "../../components/containers/Heading";
 import Modal from "../../components/Modal/Modal";
-import Heading from "../../components/Main/Heading";
 import Message from "../../components/Main/Message";
 import * as actions from "../../store/actions";
-import { DeleteProfileButtonsContainer } from "../../layout/elements/Buttons";
-import { DeleteTodoWrapper } from "../../layout/elements/Main";
-import FormBannerContainer from "../../components/Main/FormBannerContainer";
+import { FormButtonsContainer } from "../../components/containers/Buttons";
+import FormBackgroundContainer from "../../components/Main/FormBackgroundContainer";
 
 const DeleteTodo = ({ show, close, todo, deleteTodo, error, loading }) => {
 	return (
 		<Modal opened={show} close={close}>
-			<FormBannerContainer>
-				<Heading noMargin size="h1" color="white">
-					Deleting a todo
-				</Heading>
-				<DeleteTodoWrapper>{todo.todo}</DeleteTodoWrapper>
-			</FormBannerContainer>
-			<DeleteProfileButtonsContainer>
+			<FormBackgroundContainer>
+				<HeadingContainer>
+					<h1>Deleting a todo</h1>
+					<p>{todo.todo}</p>
+				</HeadingContainer>
+			</FormBackgroundContainer>
+			<FormButtonsContainer>
 				<Button
 					contain
 					type="submit"
@@ -32,11 +31,10 @@ const DeleteTodo = ({ show, close, todo, deleteTodo, error, loading }) => {
 				<Button color="main" type="button" contain onClick={close}>
 					Cancel
 				</Button>
-
 				<Message error show={error}>
 					{error}
 				</Message>
-			</DeleteProfileButtonsContainer>
+			</FormButtonsContainer>
 		</Modal>
 	);
 };

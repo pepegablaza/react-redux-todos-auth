@@ -1,7 +1,7 @@
 import React from "react";
-import { BackdropWrapper } from "../../../layout/elements/Backdrops";
+import { BackdropContainer } from "../../containers/Modal";
 
 const Backdrop = ({ opened, close }) => {
-	return <BackdropWrapper onClick={close} opened={opened} />;
+	return <BackdropContainer onClick={close} opened={opened} />;
 };
 export default Backdrop;

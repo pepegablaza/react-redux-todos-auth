@@ -1,8 +1,21 @@
 import styled from "styled-components";
 
-//Modal
+//Backdrop container for backdrop component
+export const BackdropContainer = styled.div`
+	position: fixed;
+	top: 0;
+	left: 0%;
+	width: 100%;
+	z-index: 100;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.7);
+	opacity: ${({ opened }) => (opened ? "1" : "0")};
+	visibility: ${({ opened }) => (opened ? "visible" : "hidden")};
+	transition: all 0.1s;
+`;
 
-export const ModalWrapper = styled.div`
+//Modal main container for modal Component
+export const ModalContainer = styled.div`
 	position: fixed;
 	top: 50%;
 	left: 50%;
@@ -22,7 +35,8 @@ export const ModalWrapper = styled.div`
 	transition: all 0.1s;
 `;
 
-export const ModalInsideWrapper = styled.div`
+//Modal inside container
+export const ModalInsideContainer = styled.div`
 	position: relative;
 	width: 100%;
 	border-top-right-radius: 2rem 2rem;
@@ -31,4 +45,11 @@ export const ModalInsideWrapper = styled.div`
 	align-items: center;
 	background-color: var(--color-white);
 	justify-content: center;
+	@media ${(props) => props.theme.mediaQueries.medium} {
+		flex-direction: column;
+		height: 60vh;
+	}
+	@media ${(props) => props.theme.mediaQueries.small} {
+		width: 100%;
+	}
 `;

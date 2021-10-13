@@ -53,7 +53,17 @@ const GlobalStyle = createGlobalStyle`
     outline: none;
     text-decoration: none;
     font-family: inherit;
+    color:inherit;
   }
+
+
+  .icon{
+    display:block;
+    height:100%;
+    width:50%;
+    object-fit: contain;
+  }
+
 
 .custom-shape-divider-bottom-1633888040 {
     position: absolute;

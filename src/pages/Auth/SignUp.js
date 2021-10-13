@@ -5,16 +5,13 @@ import * as actions from "../../store/actions";
 
 import Input from "../../components/Main/Input";
 import Button from "../../components/Main/Button";
-import Heading from "../../components/Main/Heading";
+import { HeadingContainer } from "../../components/containers/Heading";
 import Message from "../../components/Main/Message";
 import SignUpSchema from "../../schemas/SignUpSchema";
-import { LoginMessageWrapper } from "../../layout/elements/Messages";
-import {
-	FormBanner,
-	FormContainer,
-	StyledForm,
-} from "../../layout/elements/Forms";
-import Waves from "../../components/Main/Waves";
+import { StyledForm } from "../../components/Main/Form";
+import { FormContainer } from "../../components/containers/Form";
+import { MessagesContainer } from "../../components/containers/Message";
+import FormBackgroundContainer from "../../components/Main/FormBackgroundContainer";
 
 const SignUp = ({ signUp, loading, error, cleanUp }) => {
 	useEffect(() => {
@@ -40,15 +37,12 @@ const SignUp = ({ signUp, loading, error, cleanUp }) => {
 		>
 			{({ isSubmitting, isValid }) => (
 				<FormContainer>
-					<FormBanner>
-						<Heading noMargin size="h1" color="white">
-							Sign up
-						</Heading>
-						<Heading bold size="h4" color="white">
-							Fill in your details to register your new account.
-						</Heading>
-						<Waves />
-					</FormBanner>
+					<FormBackgroundContainer>
+						<HeadingContainer>
+							<h1>Sign up</h1>
+							<p>Fill in your details to register your new account.</p>
+						</HeadingContainer>
+					</FormBackgroundContainer>
 					<StyledForm>
 						<Field
 							type="text"
@@ -87,11 +81,11 @@ const SignUp = ({ signUp, loading, error, cleanUp }) => {
 						>
 							Sign up
 						</Button>
-						<LoginMessageWrapper>
+						<MessagesContainer>
 							<Message error show={error}>
 								{error}
 							</Message>
-						</LoginMessageWrapper>
+						</MessagesContainer>
 					</StyledForm>
 				</FormContainer>
 			)}

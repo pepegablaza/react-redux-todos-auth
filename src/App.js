@@ -1,12 +1,12 @@
 import React from "react";
-import Layout from "./layout/Layout";
+import AppLayout from "./layout/AppLayout";
 import Routes from "./routes";
 
 const App = () => {
 	return (
-		<Layout>
+		<AppLayout>
 			<Routes />
-		</Layout>
+		</AppLayout>
 	);
 };
 

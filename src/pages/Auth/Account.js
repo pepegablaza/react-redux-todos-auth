@@ -5,23 +5,20 @@ import { Formik, Field } from "formik";
 import * as actions from "../../store/actions";
 import Message from "../../components/Main/Message";
 import Button from "../../components/Main/Button";
-import Heading from "../../components/Main/Heading";
 import Input from "../../components/Main/Input";
 import Modal from "../../components/Modal/Modal";
 import ProfileSchema from "../../schemas/ProfileSchema";
+import { HeadingContainer } from "../../components/containers/Heading";
+import { FormContainer } from "../../components/containers/Form";
+import { StyledForm } from "../../components/Main/Form";
+import { FormButtonsContainer } from "../../components/containers/Buttons";
 import {
-	ProfileMessageWrapper,
-	ProfileDeleteWrapper,
-} from "../../layout/elements/Messages";
-import {
-	DeleteProfileButtonsContainer,
-	ProfileButtonsWrapper,
-} from "../../layout/elements/Buttons";
-import { FormContainer, StyledForm } from "../../layout/elements/Forms";
-import FormBannerContainer from "../../components/Main/FormBannerContainer";
-import { VerifyContainer } from "../../layout/elements/Main";
+	ProfileMessageContainer,
+	ProfileDeleteContainer,
+} from "../../components/containers/Message";
+import FormBackgroundContainer from "../../components/Main/FormBackgroundContainer";
 
-const Profile = ({
+const Account = ({
 	firebase,
 	editProfile,
 	loading,
@@ -59,43 +56,41 @@ const Profile = ({
 			>
 				{({ isSubmitting, isValid }) => (
 					<FormContainer>
-						<FormBannerContainer>
-							<Heading bold size="h1" color="white">
-								Profile
-							</Heading>
-							<Heading size="h3" color="white">
-								Edit your profile informations.
-							</Heading>
-						</FormBannerContainer>
+						<FormBackgroundContainer>
+							<HeadingContainer>
+								<h1>Account</h1>
+								<p>Edit your account informations.</p>
+							</HeadingContainer>
+						</FormBackgroundContainer>
 						<StyledForm>
 							<Field
 								type="text"
 								name="firstName"
-								placeholder="Your first name..."
+								placeholder="First name"
 								component={Input}
 							/>
 							<Field
 								type="text"
 								name="lastName"
-								placeholder="Your last name..."
+								placeholder="Last name"
 								component={Input}
 							/>
 							<Field
 								type="email"
 								name="email"
-								placeholder="Your email..."
+								placeholder="Email"
 								component={Input}
 							/>
 							<Field
 								type="password"
 								name="password"
-								placeholder="Your password..."
+								placeholder="Password"
 								component={Input}
 							/>
 							<Field
 								type="password"
 								name="confirmPassword"
-								placeholder="Re-type your password..."
+								placeholder="Re-type your password"
 								component={Input}
 							/>
 							<Button
@@ -105,36 +100,34 @@ const Profile = ({
 							>
 								Edit
 							</Button>
-							<ProfileMessageWrapper>
+							<ProfileMessageContainer>
 								<Message error show={error}>
 									{error}
 								</Message>
-							</ProfileMessageWrapper>
-							<ProfileMessageWrapper>
+							</ProfileMessageContainer>
+							<ProfileMessageContainer>
 								<Message success show={error === false}>
 									Profile was updated!
 								</Message>
-							</ProfileMessageWrapper>
-							<ProfileDeleteWrapper
+							</ProfileMessageContainer>
+							<ProfileDeleteContainer
 								stage="error"
 								onClick={() => setModalOpened(true)}
 							>
 								Delete my profile
-							</ProfileDeleteWrapper>
+							</ProfileDeleteContainer>
 						</StyledForm>
 					</FormContainer>
 				)}
 			</Formik>
 			<Modal opened={modalOpened} close={() => setModalOpened(false)}>
-				<FormBannerContainer>
-					<Heading noMargin size="h1" color="white">
-						Delete your account
-					</Heading>
-					<Heading bold size="h4" color="white">
-						Do you really want to delete your account?
-					</Heading>
-				</FormBannerContainer>
-				<DeleteProfileButtonsContainer>
+				<FormBackgroundContainer>
+					<HeadingContainer>
+						<h1>Delete your account</h1>
+						<p>Do you really want to delete your account?</p>
+					</HeadingContainer>
+				</FormBackgroundContainer>
+				<FormButtonsContainer>
 					<Button
 						contain
 						onClick={() => deleteUser()}
@@ -150,7 +143,7 @@ const Profile = ({
 					<Message error show={errorDelete}>
 						{errorDelete}
 					</Message>
-				</DeleteProfileButtonsContainer>
+				</FormButtonsContainer>
 			</Modal>
 		</>
 	);
@@ -170,4 +163,4 @@ const mapDispatchToProps = {
 	deleteUser: actions.deleteUser,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Profile);
+export default connect(mapStateToProps, mapDispatchToProps)(Account);

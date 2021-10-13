@@ -2,16 +2,17 @@ import React from "react";
 import { Formik, Field } from "formik";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions";
-import { InputStyledForm } from "../../layout/elements/Forms";
+
+import { StyledForm } from "../../components/Main/Form";
 import Button from "../../components/Main/Button";
-import Heading from "../../components/Main/Heading";
 import Modal from "../../components/Modal/Modal";
 import Input from "../../components/Main/Input";
 import Message from "../../components/Main/Message";
 import TodoSchema from "../../schemas/TodoSchema";
-import { InputTodoButtonsWrapper } from "../../layout/elements/Buttons";
-import { InputTodoMessageWrapper } from "../../layout/elements/Messages";
-import FormBannerContainer from "../../components/Main/FormBannerContainer";
+import FormBackgroundContainer from "../../components/Main/FormBackgroundContainer";
+import { InputTodoButtonsContainer } from "../../components/containers/Buttons";
+import { MessagesContainer } from "../../components/containers/Message";
+import { HeadingContainer } from "../../components/containers/Heading";
 
 const InputTodo = ({
 	editTodo,
@@ -26,14 +27,12 @@ const InputTodo = ({
 	return (
 		<>
 			<Modal opened={opened} close={close}>
-				<FormBannerContainer>
-					<Heading noMargin size="h1" color="white">
-						{editTodo ? "Edit your todo" : "Add your new todo"}
-					</Heading>
-					<Heading bold size="h4" color="white">
-						{editTodo ? "Edit your todo" : "Type your todo"}
-					</Heading>
-				</FormBannerContainer>
+				<FormBackgroundContainer>
+					<HeadingContainer>
+						<h1>{editTodo ? "Edit your todo" : "Add your new todo"}</h1>
+						<p>{editTodo ? "Edit your todo" : "Type your todo"}</p>
+					</HeadingContainer>
+				</FormBackgroundContainer>
 				<Formik
 					initialValues={{
 						todo: editTodo ? editTodo.todo : "",
@@ -52,14 +51,14 @@ const InputTodo = ({
 					}}
 				>
 					{({ isSubmitting, isValid, resetForm }) => (
-						<InputStyledForm>
+						<StyledForm>
 							<Field
 								type="text"
 								name="todo"
 								placeholder="Write todo..."
 								component={Input}
 							/>
-							<InputTodoButtonsWrapper>
+							<InputTodoButtonsContainer>
 								<Button
 									contain
 									type="submit"
@@ -80,13 +79,13 @@ const InputTodo = ({
 								>
 									Cancel
 								</Button>
-							</InputTodoButtonsWrapper>
-							<InputTodoMessageWrapper>
+							</InputTodoButtonsContainer>
+							<MessagesContainer>
 								<Message error show={error}>
 									{error}
 								</Message>
-							</InputTodoMessageWrapper>
-						</InputStyledForm>
+							</MessagesContainer>
+						</StyledForm>
 					)}
 				</Formik>
 			</Modal>

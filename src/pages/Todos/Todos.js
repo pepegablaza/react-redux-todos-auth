@@ -7,7 +7,7 @@ import {
 	TodosNavigationContainer,
 	TodosMainContainer,
 	TodosContainer,
-} from "../../layout/elements/Main";
+} from "../../components/containers/Todos";
 import InputTodo from "./InputTodo";
 import Todo from "./Todo";
 import Button from "../../components/Main/Button";

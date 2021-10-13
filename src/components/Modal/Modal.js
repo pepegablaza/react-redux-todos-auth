@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { ModalWrapper, ModalInsideWrapper } from "../../layout/elements/Modals";
+import { ModalContainer, ModalInsideContainer } from "../containers/Modal";
 import Backdrop from "./Backdrop/Backdrop";
 
 const Modal = React.memo(
@@ -8,9 +8,9 @@ const Modal = React.memo(
 		return ReactDOM.createPortal(
 			<>
 				<Backdrop close={close} opened={opened} />
-				<ModalWrapper opened={opened}>
-					<ModalInsideWrapper>{children}</ModalInsideWrapper>
-				</ModalWrapper>
+				<ModalContainer opened={opened}>
+					<ModalInsideContainer>{children}</ModalInsideContainer>
+				</ModalContainer>
 			</>,
 			document.getElementById("root-modal")
 		);

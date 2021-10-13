@@ -6,7 +6,7 @@ import SignUp from "../pages/Auth/SignUp";
 import Logout from "../pages/Auth/Logout";
 import VerifyEmail from "../pages/Auth/VerifyEmail";
 import RecoverPassword from "../pages/Auth/RecoverPassword";
-import Profile from "../pages/Auth/Profile";
+import Account from "../pages/Auth/Account";
 import Loader from "../components/Main/Loader";
 import { HomePage } from "../pages/Home/HomePage";
 const Todos = React.lazy(() => import("../pages/Todos/Todos"));
@@ -19,7 +19,7 @@ const Routes = ({ loggedIn, emailVerified }) => {
 			<Switch>
 				<Route exact path="/" component={HomePage} />
 				<Route exact path="/verify-email" component={VerifyEmail} />
-				<Route exact path="/profile" component={Profile} />
+				<Route exact path="/account" component={Account} />
 				<Route exact path="/logout" component={Logout} />
 				<Redirect to="/verify-email" component={VerifyEmail} />
 			</Switch>
@@ -30,7 +30,7 @@ const Routes = ({ loggedIn, emailVerified }) => {
 				<Switch>
 					<Route exact path="/" component={HomePage} />
 					<Route exact path="/todos" component={Todos} />
-					<Route exact path="/profile" component={Profile} />
+					<Route exact path="/account" component={Account} />
 					<Route exact path="/logout" component={Logout} />
 					<Redirect to="/" component={HomePage} />
 				</Switch>

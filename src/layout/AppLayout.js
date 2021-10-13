@@ -1,15 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
-
-import { MainWrapper } from "./elements/Main";
+import { MainContainer } from "../components/containers/Main";
 import Navbar from "../components/Navigation/Navbar/Navbar";
 import SideDrawer from "../components/Navigation/Navbar/SideDrawer";
 
-const Layout = ({ children, loggedIn }) => (
+const AppLayout = ({ children, loggedIn }) => (
 	<>
 		<Navbar loggedIn={loggedIn} />
 		<SideDrawer loggedIn={loggedIn} />
-		<MainWrapper>{children}</MainWrapper>
+		<MainContainer>{children}</MainContainer>
 	</>
 );
 
@@ -17,4 +16,4 @@ const mapStateToProps = ({ firebase }) => ({
 	loggedIn: firebase.auth,
 });
 
-export default connect(mapStateToProps)(Layout);
+export default connect(mapStateToProps)(AppLayout);

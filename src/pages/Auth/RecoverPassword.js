@@ -8,9 +8,10 @@ import Heading from "../../components/Main/Heading";
 import Input from "../../components/Main/Input";
 import Button from "../../components/Main/Button";
 import Message from "../../components/Main/Message";
-import { RecoverMessageWrapper } from "../../layout/elements/Messages";
-import { FormContainer, StyledForm } from "../../layout/elements/Forms";
-import FormBannerContainer from "../../components/Main/FormBannerContainer";
+import { StyledForm } from "../../components/Main/Form";
+import { FormContainer } from "../../components/containers/Form";
+import { MessagesContainer } from "../../components/containers/Message";
+import FormBackgroundContainer from "../../components/Main/FormBackgroundContainer";
 
 const RecoverPassword = ({ error, loading, sendEmail }) => {
 	return (
@@ -26,14 +27,14 @@ const RecoverPassword = ({ error, loading, sendEmail }) => {
 		>
 			{({ isSubmitting, isValid }) => (
 				<FormContainer>
-					<FormBannerContainer>
+					<FormBackgroundContainer>
 						<Heading bold size="h1" color="white">
 							Recover Password
 						</Heading>
 						<Heading size="h3" color="white">
 							Enter your email to recover password
 						</Heading>
-					</FormBannerContainer>
+					</FormBackgroundContainer>
 					<StyledForm>
 						<Field
 							type="email"
@@ -48,16 +49,16 @@ const RecoverPassword = ({ error, loading, sendEmail }) => {
 						>
 							Recover Password
 						</Button>
-						<RecoverMessageWrapper>
+						<MessagesContainer>
 							<Message error show={error}>
 								{error}
 							</Message>
-						</RecoverMessageWrapper>
-						<RecoverMessageWrapper>
+						</MessagesContainer>
+						<MessagesContainer>
 							<Message success show={error === false}>
 								Recover email sent successfully
 							</Message>
-						</RecoverMessageWrapper>
+						</MessagesContainer>
 					</StyledForm>
 				</FormContainer>
 			)}

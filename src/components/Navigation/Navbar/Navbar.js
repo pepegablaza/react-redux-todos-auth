@@ -1,23 +1,22 @@
 import React from "react";
-
-import { Container } from "../../../layout/elements/Main";
+import { Container } from "../../containers/Main";
 import {
-	NavbarWrapper,
-	NavbarInnerWrapper,
-} from "../../../layout/elements/Navbars";
+	NavbarContainer,
+	NavbarInnerContainer,
+} from "../../containers/Navigation";
 import NavItems from "./NavItems";
 import Logo from "../Logo/Logo";
 
 const Navbar = ({ loggedIn }) => {
 	return (
-		<NavbarWrapper>
+		<NavbarContainer>
 			<Container>
-				<NavbarInnerWrapper>
+				<NavbarInnerContainer>
 					<Logo />
 					<NavItems loggedIn={loggedIn} />
-				</NavbarInnerWrapper>
+				</NavbarInnerContainer>
 			</Container>
-		</NavbarWrapper>
+		</NavbarContainer>
 	);
 };
 

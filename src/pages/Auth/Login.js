@@ -7,10 +7,12 @@ import LoginSchema from "../../schemas/LoginSchema";
 import Input from "../../components/Main/Input";
 import Button from "../../components/Main/Button";
 import Heading from "../../components/Main/Heading";
+import { HeadingContainer } from "../../components/containers/Heading";
 import Message from "../../components/Main/Message";
-import { FormContainer, StyledForm } from "../../layout/elements/Forms";
-import FormBannerContainer from "../../components/Main/FormBannerContainer";
-import { LoginMessageWrapper } from "../../layout/elements/Messages";
+import { FormContainer } from "../../components/containers/Form";
+import { StyledForm } from "../../components/Main/Form";
+import { MessagesContainer } from "../../components/containers/Message";
+import FormBackgroundContainer from "../../components/Main/FormBackgroundContainer";
 import { Link } from "react-router-dom";
 
 const Login = ({ login, loading, error, cleanUp }) => {
@@ -34,19 +36,18 @@ const Login = ({ login, loading, error, cleanUp }) => {
 		>
 			{({ isSubmitting, isValid }) => (
 				<FormContainer>
-					<FormBannerContainer>
-						<Heading bold size="h1" color="white">
-							Login
-						</Heading>
-						<Heading size="h3" color="white">
-							Login with your existing account. You dont have an account?
-							<Link to="/signup">
-								<Heading noMargin size="h3" bold color="white">
-									Sign up here.
-								</Heading>
-							</Link>
-						</Heading>
-					</FormBannerContainer>
+					<FormBackgroundContainer>
+						<HeadingContainer>
+							<h1>Login</h1>
+							<p>
+								Login with your existing account. You dont have an account?
+								<Link to="/signup" style={{ textDecoration: "underline" }}>
+									Sign up here
+								</Link>
+								.
+							</p>
+						</HeadingContainer>
+					</FormBackgroundContainer>
 					<StyledForm>
 						<Field
 							type="email"
@@ -72,15 +73,15 @@ const Login = ({ login, loading, error, cleanUp }) => {
 							Forgot your password?
 						</Heading>
 						<Link to="/recover">
-							<LoginMessageWrapper stage="success">
+							<MessagesContainer stage="success">
 								Forgot password
-							</LoginMessageWrapper>
+							</MessagesContainer>
 						</Link>
-						<LoginMessageWrapper>
+						<MessagesContainer>
 							<Message error show={error}>
 								{error}
 							</Message>
-						</LoginMessageWrapper>
+						</MessagesContainer>
 					</StyledForm>
 				</FormContainer>
 			)}
